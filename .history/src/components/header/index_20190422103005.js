@@ -16,7 +16,7 @@ const Header = () => (
   <div className="header-wrapper navbar-inner">
     <Link to="/" className="brand">
       <img
-        src="//static2.cnodejs.org/public/images/cnodejs_light.svg"
+        src="../../assets/img/cnodejs_light.svg"
         alt="cnode"
       />
     </Link>

@@ -62,7 +62,7 @@ const Sidebar = () => (
               rel="noopener noreferrer"
             >
               <img
-                src="//static2.cnodejs.org/public/images/golangtc-logo.png" alt="Golang 中国"
+                src="//o4j806krb.qnssl.com/public/images/golangtc-logo.png" alt="Golang 中国"
               />
             </a>
           </li>
@@ -74,7 +74,7 @@ const Sidebar = () => (
               rel="noopener noreferrer"
             >
               <img
-                src="//static2.cnodejs.org/public/images/phphub-logo.png" alt="Laravel 社区"
+                src="//o4j806krb.qnssl.com/public/images/phphub-logo.png" alt="Laravel 社区"
               />
             </a>
           </li>
