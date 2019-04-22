@@ -1,0 +1,4 @@
+export const GETUSER = "GETUSER";
+export const GETTODOS = "GETTODOS";
+export const FETCH_USER_SUCCEEDED = "FETCH_USER_SUCCEEDED";
+export const FETCH_USER_FAILURE = "FETCH_USER_FAILURE";

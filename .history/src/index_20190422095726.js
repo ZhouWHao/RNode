@@ -10,7 +10,7 @@ import './index.css';
 import App from './App';
 import NotFound from './components/pages/NotFound';
 import Login from './components/pages/Login';
-import serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
   <Router>
