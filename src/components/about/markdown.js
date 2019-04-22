@@ -36,11 +36,11 @@ const stringHtml = `
           </a>
 
           <a href="http://segmentfault.com/" target="_blank">
-            <img src="//o4j806krb.qnssl.com/public/images/temp/sf.png">
+            <img src="//static2.cnodejs.org/public/images/temp/sf.png">
           </a>
 
           <a href="http://ionichina.com/" target="_blank">
-            <img src="//o4j806krb.qnssl.com/public/images/temp/ionichina.png">
+            <img src="//static2.cnodejs.org/public/images/temp/ionichina.png">
           </a>
 
         </div>
