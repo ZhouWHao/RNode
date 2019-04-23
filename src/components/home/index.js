@@ -1,9 +1,10 @@
 // Copyright (c) 2019 by zhouwh. All Rights Reserved.
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 import './index.less';
 
 class Home extends Component {
@@ -21,17 +22,24 @@ class Home extends Component {
     this.setState({
       tagType: type || 'all',
     });
-    this.getPostData(type).then(res => {
-      if (res.status === 200) {
-        this.setState({
-          postList: res.data.data,
-        });
-      } else {
-        console.error(res.statusText);
-      }
-    }).catch(e => {
-      console.warn(e);
+    const { dispatch } = this.props;
+    dispatch({
+        type: 'HOMEDATA',
+        params: {
+          type,
+        }
     });
+    // this.getPostData(type).then(res => {
+    //   if (res.status === 200) {
+    //     this.setState({
+    //       postList: res.data.data,
+    //     });
+    //   } else {
+    //     console.error(res.statusText);
+    //   }
+    // }).catch(e => {
+    //   console.warn(e);
+    // });
   }
 
   componentDidMount() {
@@ -44,27 +52,34 @@ class Home extends Component {
       tagType: type || 'all',
     });
     if (this.state.tagType !== type) {
-      this.getPostData(type).then(res => {
-        if (res.status === 200) {
-          this.setState({
-            postList: res.data.data,
-          });
-        } else {
-          console.error(res.statusText);
-        }
-      }).catch(e => {
-        console.warn(e);
+      const {dispatch} = this.props;
+      dispatch({
+          type: 'HOMEDATA',
+          params: {
+            type,
+          }
       });
+      // this.getPostData(type).then(res => {
+      //   if (res.status === 200) {
+      //     this.setState({
+      //       postList: res.data.data,
+      //     });
+      //   } else {
+      //     console.error(res.statusText);
+      //   }
+      // }).catch(e => {
+      //   console.warn(e);
+      // });
     }
   }
 
-  getPostData(type) {
-    return axios.get('https://cnodejs.org/api/v1/topics',{
-      params: {
-        tab: type,
-      }
-    });
-  }
+  // getPostData(type) {
+  //   return axios.get('https://cnodejs.org/api/v1/topics',{
+  //     params: {
+  //       tab: type,
+  //     }
+  //   });
+  // }
 
   tabTypes(post) {
     const tab = post.tab;
@@ -105,8 +120,9 @@ class Home extends Component {
   }
 
   render () {
+    const {home} = this.props.home;
     const contentHtml = () => {
-      return this.state.postList.map((post,index) => (
+      return home.map((post,index) => (
           <div className="cell" key={post.id}>
             <a className="user-avatar pull-left">
               <img
@@ -159,12 +175,18 @@ class Home extends Component {
         </div>
         <div className="inner no-padding">
           <div className="topic-list">
-            {this.state.postList.length ? contentHtml() : infoHtml()}
+            {home.length ? contentHtml() : infoHtml()}
           </div>
         </div>
       </div>
     );
   }
 };
-
-export default Home;
+const mapStateToProps = (state) => {
+  console.log("首页的",state);
+  return{
+    home:state.home,
+    //这里的home对应的就是我们的reducers返回的home
+  };
+};
+export default connect(mapStateToProps)(Home);

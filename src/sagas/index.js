@@ -33,8 +33,7 @@
 //   }
 import {all,fork} from 'redux-saga/effects';
 // import {watchFetchUser,watchFetchTodos} from './user';
-import * as userSagas from './user';
-import * as counterSagas from './counter';
+import * as homeSagas from './home';
 // console.log(Object.values(userSagas));
 //用这个根级别saga来组合多个saga
 export default function* rootSaga(){
@@ -46,8 +45,8 @@ export default function* rootSaga(){
    // ]);
    //使用扩展运算符展开
    yield all([
-     ...Object.values(userSagas),
-     ...Object.values(counterSagas)
+     ...Object.values(homeSagas),
+  
    ].map(fork));
    //等同于
    // yield all([

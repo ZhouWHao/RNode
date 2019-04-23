@@ -1,30 +1,30 @@
-import { GETUSER,FETCH_USER_SUCCEEDED ,FETCH_USER_FAILURE}from "../constants/user"
+import { HOMEDATA,FETCH_HOME_SUCCEEDED ,FETCH_HOME_FAILURE} from "../constants/home"
 const initialState = {
     isFetching:false,
     error:null,
-    user:null
+    home:null
 }
-const user = (state=initialState,action={}) => {
+const home = (state=initialState,action={}) => {
     switch(action.type){
-        case GETUSER:
+        case HOMEDATA:
             return{
                 isFetching:true,
                 error:null,
-                user:null
+                home:null,
             }
-        case FETCH_USER_SUCCEEDED:
+        case FETCH_HOME_SUCCEEDED:
             return{
                 isFetching:false,
                 error:null,
-                user:action.user
+                home:action.home
             }
-        case FETCH_USER_FAILURE:
+        case FETCH_HOME_FAILURE:
             return{
                 isFetching:false,
-                error:action.error,
-                user:null
+                error:action.home,
+                home:null
             }
         default:return state
     }
 }
-export default user;
+export default home;
