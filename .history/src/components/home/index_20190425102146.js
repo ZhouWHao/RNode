@@ -17,14 +17,16 @@ class Home extends Component {
     };
   }
   componentDidMount() {
-    const canshu = "123";
-    // this.setState({
-    //   tagType: type || 'all',
-    // });
+    const type = "123";
+    this.setState({
+      tagType: type || 'all',
+    });
     const { dispatch } = this.props;
     dispatch({
         type: 'HOMEDATA',
-        canshu,
+        // params: {
+          type,
+        }
     });
   }
   // componentWillReceiveProps(nextProps) {

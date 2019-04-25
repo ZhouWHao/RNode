@@ -21,7 +21,7 @@ const home = (state=initialState,action={}) => {
         case FETCH_HOME_FAILURE:
             return{
                 isFetching:false,
-                error:action.error,
+                error:action.home,
                 home:null
             }
         default:return state

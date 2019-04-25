@@ -14,17 +14,20 @@ class Home extends Component {
     this.state = {
       postList: [],
       tagType: '',
+      home:this.props.home,
     };
   }
   componentDidMount() {
-    const canshu = "123";
-    // this.setState({
-    //   tagType: type || 'all',
-    // });
+    const type = this.props.match.params.type;
+    this.setState({
+      tagType: type || 'all',
+    });
     const { dispatch } = this.props;
     dispatch({
         type: 'HOMEDATA',
-        canshu,
+        params: {
+          type,
+        }
     });
   }
   // componentWillReceiveProps(nextProps) {

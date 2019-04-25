@@ -4,10 +4,11 @@ import axios from 'axios';
 import {HOMEDATA,FETCH_HOME_SUCCEEDED ,FETCH_HOME_FAILURE} from '../constants/home';
 
  //监听查询操作异步action的回调函数
-function* FetchHome(action){
+function* FetchHome(){
     //监听获取
-        // const {canshu} = take('HOMEDATA');
-        console.log("render",action);
+    while(true) {
+        const {canshu} = take('HOMEDATA');
+        console.log("render",canshu);
         // {params:{type:action.type}}
         try{
             console.log("render")
@@ -17,6 +18,7 @@ function* FetchHome(action){
             yield put({type:FETCH_HOME_FAILURE,error:e.message}) //相当于dispatch一个action,并把值传过去
             console.dir(e);
         }
+    } 
 }
 export function* watchFetchHome(){
     yield takeEvery(HOMEDATA,FetchHome)

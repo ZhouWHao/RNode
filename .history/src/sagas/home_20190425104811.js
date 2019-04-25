@@ -7,7 +7,7 @@ import {HOMEDATA,FETCH_HOME_SUCCEEDED ,FETCH_HOME_FAILURE} from '../constants/ho
 function* FetchHome(action){
     //监听获取
         // const {canshu} = take('HOMEDATA');
-        console.log("render",action);
+        console.log("render",canshu);
         // {params:{type:action.type}}
         try{
             console.log("render")

@@ -16,20 +16,70 @@ class Home extends Component {
       tagType: '',
     };
   }
-  componentDidMount() {
-    const canshu = "123";
-    // this.setState({
-    //   tagType: type || 'all',
-    // });
+
+  componentWillMount() {
+    const type = this.props.match.params.type;
+    this.setState({
+      tagType: type || 'all',
+    });
     const { dispatch } = this.props;
     dispatch({
         type: 'HOMEDATA',
-        canshu,
+        params: {
+          type,
+        }
     });
+    // this.getPostData(type).then(res => {
+    //   if (res.status === 200) {
+    //     this.setState({
+    //       postList: res.data.data,
+    //     });
+    //   } else {
+    //     console.error(res.statusText);
+    //   }
+    // }).catch(e => {
+    //   console.warn(e);
+    // });
   }
-  // componentWillReceiveProps(nextProps) {
 
-  // }
+
+  componentWillReceiveProps(nextProps) {
+    // console.log("props",nextProps.match.params,this.props.match.params)
+    // const type = nextProps.match.params.type;
+    // this.setState({
+    //   tagType: type || 'all',
+    // });
+    // if (this.state.tagType !== type) {
+      
+      // this.getPostData(type).then(res => {
+      //   if (res.status === 200) {
+      //     this.setState({
+      //       postList: res.data.data,
+      //     });
+      //   } else {
+      //     console.error(res.statusText);
+      //   }
+      // }).catch(e => {
+      //   console.warn(e);
+      // });
+    // }
+  }
+
+  // getPostData(type) {
+  //   return axios.get('https://cnodejs.org/api/v1/topics',{
+  //     params: {
+  //       tab: type,
+  //     }
+  //   });
+  const {dispatch} = this.props;
+  dispatch({
+    type: 'HOMEDATA',
+  });
+}
+
+// }
+
+componentDidMount () {
   tabTypes(post) {
     const tab = post.tab;
     const map = {
@@ -69,10 +119,9 @@ class Home extends Component {
   }
 
   render () {
-    const { home } = this.props.home;
-    console.log("render",this.props.home);
-    // var home = [];
-    console.log(this.state)
+    // const { home } = this.props;
+    var home = [];
+    console.log(this.props)
     const contentHtml = () => {
       return home.map((post,index) => (
           <div className="cell" key={post.id}>
@@ -86,6 +135,7 @@ class Home extends Component {
                 className="count-of-replies"
                 title="回复数"
               >
+              {post.reply_count}
               </span>
               <span className="count-sperator">/</span>
               <span className="count-of-visits" title="点击数">

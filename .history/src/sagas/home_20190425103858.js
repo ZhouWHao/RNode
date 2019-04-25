@@ -5,9 +5,10 @@ import {HOMEDATA,FETCH_HOME_SUCCEEDED ,FETCH_HOME_FAILURE} from '../constants/ho
 
  //监听查询操作异步action的回调函数
 function* FetchHome(action){
+    console.log(action)
     //监听获取
-        // const {canshu} = take('HOMEDATA');
-        console.log("render",action);
+        const {canshu} = take('HOMEDATA');
+        console.log("render",canshu,...args,args);
         // {params:{type:action.type}}
         try{
             console.log("render")

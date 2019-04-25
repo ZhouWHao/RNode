@@ -14,22 +14,42 @@ class Home extends Component {
     this.state = {
       postList: [],
       tagType: '',
+      home:this.props.home,
     };
   }
+
   componentDidMount() {
-    const canshu = "123";
-    // this.setState({
-    //   tagType: type || 'all',
-    // });
+    const type = this.props.match.params.type;
+    this.setState({
+      tagType: type || 'all',
+    });
     const { dispatch } = this.props;
     dispatch({
         type: 'HOMEDATA',
-        canshu,
+        params: {
+          type,
+        }
     });
+    // this.getPostData(type).then(res => {
+    //   if (res.status === 200) {
+    //     this.setState({
+    //       postList: res.data.data,
+    //     });
+    //   } else {
+    //     console.error(res.statusText);
+    //   }
+    // }).catch(e => {
+    //   console.warn(e);
+    // });
   }
-  // componentWillReceiveProps(nextProps) {
 
-  // }
+
+  componentWillReceiveProps(nextProps) {
+
+  }
+
+  
+
   tabTypes(post) {
     const tab = post.tab;
     const map = {
