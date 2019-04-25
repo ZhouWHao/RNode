@@ -78,7 +78,7 @@ class Home extends Component {
   }
 
   render () {
-    const { home } = this.props.home;
+    const { home , isFetching} = this.props.home;
       const contentHtml = () => {
         return home.map((post,index) => (
             <div className="cell" key={post.id}>
@@ -123,7 +123,7 @@ class Home extends Component {
       }
       const infoHtml = () => (
         <div className="info-nodata">
-          <h3>暂无数据</h3>
+          <h3>{isFetching?"加载中...":"暂无数据"}</h3>
         </div>
       );
       return (
