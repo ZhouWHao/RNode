@@ -1,4 +1,4 @@
-// Copyright (c) 2019 by zhouwh. All Rights Reserved.
+// Copyright (c) 2019 by author zhouwh. All Rights Reserved.
 import React, { Component } from 'react';
 import moment from 'moment';
 import Reply from './reply.js';
@@ -71,7 +71,7 @@ class Post extends Component {
       postInfo = {};
     }
     author= postInfo&&postInfo.author&&postInfo.author.loginname;
-    tabType= this.getPostType(post);
+    tabType= this.getPostType(post);     
     return (
         <div>
             <div className="panel" >
